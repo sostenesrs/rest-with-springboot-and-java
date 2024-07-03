@@ -1,1 +1,6 @@
-spring.application.name=rest-with-springboot-and-java
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/+nome do banco?useTimezone=true&serverTimezone=UTC
+    username: root
+    password: admin123
