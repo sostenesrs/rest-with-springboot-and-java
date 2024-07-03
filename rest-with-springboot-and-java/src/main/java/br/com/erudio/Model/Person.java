@@ -1,16 +1,30 @@
 package br.com.erudio.Model;
 
+import jakarta.persistence.*;
+
 import java.io.Serializable;
 import java.util.Objects;
 
+@Entity
+@Table(name = "person")
 public class Person implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)//auto incremental
     private Long id;
+
+    @Column(name = "first_name", nullable = false, length = 50)
     private String firstName;
+
+    @Column(name = "last_name", nullable = false,  length = 80)
     private String lasttName;
+
+    @Column(nullable = false, length = 100)
     private String address;
+
+    @Column(nullable = false, length = 6)
     private String gender;
 
     //NÃO USAR LOMBOK

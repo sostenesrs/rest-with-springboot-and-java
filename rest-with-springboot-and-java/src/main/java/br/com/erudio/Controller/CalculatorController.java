@@ -1,5 +1,5 @@
 package br.com.erudio.Controller;
-import br.com.erudio.Exceptions.UnsupportedMathOperationException;
+import br.com.erudio.Exceptions.ResourceNotFoundException;
 import br.com.erudio.Services.NumberConverterService;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,7 +12,7 @@ public class CalculatorController {
 	public Double sum(@PathVariable(value = "numberOne") String numberone,
 					  @PathVariable(value = "numberTwo") String numberTwo){
 			if(!service.isNumeric(numberone) || !service.isNumeric(numberTwo)){
-				throw new UnsupportedMathOperationException("Por favor insira um valor numérico");
+				throw new ResourceNotFoundException("Por favor insira um valor numérico");
 			}
 			return service.convertToDouble(numberone) + service.convertToDouble(numberTwo);
 	}
@@ -21,7 +21,7 @@ public class CalculatorController {
 	public Double sub(@PathVariable(value = "numberOne") String numberOne,
 					  @PathVariable(value = "numberTwo") String numberTwo) {
 		if(!service.isNumeric(numberOne)|| !service.isNumeric(numberTwo)){
-			throw new UnsupportedMathOperationException("Por favor insira um valor numérico");
+			throw new ResourceNotFoundException("Por favor insira um valor numérico");
 		}
 		return service.convertToDouble(numberOne) - service.convertToDouble(numberTwo);
 	}
@@ -30,7 +30,7 @@ public class CalculatorController {
 	public Double multiplication(@PathVariable(value = "numberOne") String numberOne,
 					  @PathVariable(value = "numberTwo") String numberTwo) {
 		if(!service.isNumeric(numberOne)|| !service.isNumeric(numberTwo)){
-			throw new UnsupportedMathOperationException("Por favor insira um valor numérico");
+			throw new ResourceNotFoundException("Por favor insira um valor numérico");
 		}
 		return service.convertToDouble(numberOne) * service.convertToDouble(numberTwo);
 	}
@@ -39,7 +39,7 @@ public class CalculatorController {
 	public Double average(@PathVariable(value = "numberOne") String numberOne,
 					  @PathVariable(value = "numberTwo") String numberTwo) {
 		if(!service.isNumeric(numberOne)|| !service.isNumeric(numberTwo)){
-			throw new UnsupportedMathOperationException("Por favor insira um valor numérico");
+			throw new ResourceNotFoundException("Por favor insira um valor numérico");
 		}
 		return (service.convertToDouble(numberOne) + service.convertToDouble(numberTwo)) /2;
 	}
@@ -47,7 +47,7 @@ public class CalculatorController {
 	@RequestMapping(value = "/square/{numberOne}", method = RequestMethod.GET)
 	public Double square(@PathVariable(value = "numberOne") String numberOne) {
 		if(!service.isNumeric(numberOne)){
-			throw new UnsupportedMathOperationException("Por favor insira um valor numérico");
+			throw new ResourceNotFoundException("Por favor insira um valor numérico");
 		}
 		return Math.sqrt(service.convertToDouble(numberOne));
 	}
