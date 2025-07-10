@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class NumberConverterService {
 
-
     public Double convertToDouble(String strNumber) {
         if(strNumber==null){
             return 0D; //retorna zero
